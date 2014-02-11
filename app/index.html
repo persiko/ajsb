@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="book">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body ng-controller="ChaptersCtrl">
+
+<ul class="nav nav-pills" style="width:800px;margin:50px 0 0 -400px;position:absolute;top:0%;left:50%">
+    <li ng-repeat="chapter in chapters" class="{{chapter.isSelected}}" ng-click="setSelectedChapter(chapter)"><a
+            href="#{{chapter}}">{{chapter.name}}</a>
+    </li>
+</ul>
+<ul class="nav nav-pills" style="width:500px;margin:100px 0 0 -250px;position:absolute;top:0%;left:50%">
+    <li ng-repeat="section in sections"><a href="#/{{chapter.name}}/{{section}}">{{section}}</a>
+    </li>
+</ul>
+
+
+<ng-view></ng-view>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-route.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/chapter%202/PizzaCtrl_version1.js"></script>
+</body>
+</html>

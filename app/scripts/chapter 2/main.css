@@ -1,0 +1,17 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.matching {
+    color: red;
+}
+
+.notmatching {
+    color: lightgray;
+}
+
+.normal {
+    color: black;
+}
