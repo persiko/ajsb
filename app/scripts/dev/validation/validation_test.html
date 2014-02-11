@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body ng-app="ValidationApp">
+
+<form ng-controller="ValidationController" name="signup_form" novalidate ng-submit="signupForm()">
+
+
+    <!-- Name -->
+    <label>Name</label>
+    <input type="text"
+           placeholder="Name"
+           name="name"
+           ng-model="signup.name"
+           ng-minlength=3
+           ng-maxlength=20
+           required/>
+
+    <!-- Address -->
+    <label>Address</label>
+    <input type="text"
+           placeholder="Address"
+           name="address"
+           ng-model="signup.address"
+           ng-minlength=3
+           ng-maxlength=40
+           required/>
+
+    <!-- Credit Card -->
+    <label>Credit Card number</label>
+    <input type="number"
+           placeholder="Credit Card Number"
+           name="credit_card"
+           ng-model="signup.credit_card"
+           ng-minlength=3
+           ng-maxlength=20
+           ng-pattern="/\d{4}\-\d{4}/"
+           required/>
+
+
+
+    <div class="error"
+         ng-show="signup_form.credit_card.$dirty && signup_form.credit_card.$invalid">
+        <small class="error"
+               ng-show="signup_form.credit_card.$error.required">
+            Required
+        </small>
+        <small class="error"
+               ng-show="signup_form.credit_card.$error">
+            WTF
+        </small>
+        <small class="error"
+               ng-show="signup_form.credit_card.$error.maxlength">
+            Your name cannot be longer than 20 characters
+        </small>
+    </div>
+
+
+</form>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+<script src="script.js"></script>
+</html>
