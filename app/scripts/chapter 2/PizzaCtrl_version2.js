@@ -36,7 +36,7 @@ myPizzaModule.controller('PizzaCtrl', function ($scope) {
 
     $scope.getMatchingClass = function(pizza) {
 
-        if($scope.search && $scope.search.query.length == 0){
+        if($scope.search == undefined || $scope.search.query.length == 0){
             return 'normal';
         }
 

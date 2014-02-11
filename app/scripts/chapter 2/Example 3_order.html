@@ -3,25 +3,21 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
 <body ng-controller="PizzaCtrl">
 
 <div style="width:700px;margin:-50px 0 0 -350px;position:absolute;top:15%;left:40%">
-    <div class="panel panel-primary">
+    <div >
         <div class="panel panel-heading">
-            Pizza 101 Take Away Menu
-            <div>
-                <input type="text" class="form-control" placeholder="Search" ng-model="search.query">
-            </div>
+            <h1>Pizza 101 Take Away Menu</h1>
         </div>
 
-        <div class="panel panel-content">
-            <table class="table table-striped">
+        <div class="jumbotron">
+            <table class="table">
                 <tr ng-repeat="pizza in pizzas" ng-class="getMatchingClass(pizza)">
-                    <td>{{pizza.name}}</td>
-                    <td>{{pizza.ingredients.join(', ')}}</td>
+                    <td><div><b>{{pizza.name}}</b><br>{{pizza.ingredients.join(', ')}}</div></td>
                     <td>{{pizza.price | currency}}</td>
                     <td><input type="checkbox" ng-model="pizza.isSelected"/></td>
                 </tr>
@@ -30,7 +26,93 @@
     </div>
 </div>
 
-<div style="width:300px;margin:-50px 0 0 -150px;position:absolute;top:15%;left:70%">
+
+<div style="width:300px;margin:-50px 0 0 380px;position:absolute;top:15%;left:40%">
+    <input type="text" class="form-control" placeholder="Search" ng-model="search.query">
+</div>
+
+<div style="width:300px;margin:-50px 0 0 380px;position:absolute;top:22%;left:40%">
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">
+            Address
+        </div>
+        <form name="signup_form" novalidate>
+
+            <table style="width: 100%">
+                <tr>
+            <!-- Name -->
+            <td><label>Name</label></td>
+            <td><input type="text"
+                   placeholder="Name"
+                   name="name"
+                   ng-model="signup.name"
+                   ng-minlength=3
+                   ng-maxlength=20
+                   required/></td>
+
+            <div class="error" ng-show="signup_form.name.$dirty && signup_form.name.$invalid">
+                <small ng-show="signup_form.name.$error.minlength">
+                    Name must be at least three characters
+                </small>
+                <small ng-show="signup_form.name.$error.maxlength">
+                    Name must be at least three characters
+                </small>
+            </div>
+                </tr>
+
+
+
+
+            <!-- Address -->
+            <tr>
+            <td><label>Address</label></td>
+                <td><input type="text"
+                   placeholder="Address"
+                   name="address"
+                   ng-model="signup.address"
+                   ng-minlength=3
+                   ng-maxlength=40
+                   required/></td>
+            </tr>
+
+
+
+            <!-- Credit Card -->
+            <tr>
+            <td><label>Credit Card number</label></td>
+                <td><input type="number"
+                   placeholder="Credit Card Number"
+                   name="credit_card"
+                   ng-model="signup.credit_card"
+                   ng-minlength=3
+                   ng-maxlength=20
+                   ng-pattern="/\d{4}\"
+                   required/></td>
+            </tr>
+
+            <!-- Password -->
+                <tr>
+                    <td><label>Password</label></td>
+                    <td><input type="password"
+                   placeholder="Password"
+                   name="password"
+                   ng-model="signup.password"
+                   ng-minlength=3
+                   ng-maxlength=20
+                   required/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><input type="submit" /></td>
+                </tr>
+
+            </table>
+        </form>
+
+    </div>
+</div>
+
+<div style="width:300px;margin:-50px 0 0 380px;position:absolute;top:55%;left:40%">
     <div class="panel panel-primary">
         <div class="panel panel-heading">
             Order
@@ -43,37 +125,6 @@
             </tr>
         </table>
         <div class="panel panel-footer">Total Sum: {{sum() | currency}}</div>
-    </div>
-</div>
-
-<div style="width:300px;margin:-50px 0 0 -150px;position:absolute;top:50%;left:70%">
-    <div class="panel panel-primary">
-        <div class="panel panel-heading">
-            Address
-        </div>
-        <form name="myForm">
-                <label for="firstname">First Name: </label>
-                <input type="text" id="firstname" ng-pattern="/\d\d" required>
-
-            <p ng-show="myForm.$invalid">Last Name: <input type="text" name="first_name"></p>
-
-            <p>Phone: <input type="text" name="first_name"></p>
-
-            <p>Email: <input type="text" name="first_name"></p>
-
-            <p>Address: <input type="text" name="first_name"></p>
-
-            <p>City: <input type="text" name="first_name"></p>
-
-            <p>State: <input type="text" name="first_name"></p>
-
-            <p>Postal Code: <input type="text" name="first_name"></p>
-
-            <p>Country: <input type="text" name="first_name"></p>
-
-
-        </form>
-
     </div>
 </div>
 
